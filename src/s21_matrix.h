@@ -28,6 +28,6 @@ int s21_inverse_matrix(matrix_t *A, matrix_t *result);
 
 int exist(matrix_t *A);
 int equal(matrix_t *A, matrix_t *B);
-int additional_matrix(matrix_t *A, matrix_t *transition, int rows, int columns);
+void s21_mini_matrix(int n, int c, matrix_t *A, matrix_t *mini);
 
 #endif  // SRC_S21_MATRIX_H_

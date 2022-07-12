@@ -139,15 +139,15 @@ int s21_transpose(matrix_t *A, matrix_t *result) {
     return res;
 }
 
-void s21_mini_matrix(int n, int c, matrix_t *A, matrix_t *minimat) {
-    s21_create_matrix(A->rows - 1, A->columns - 1, minimat);
+void s21_mini(int n, int c, matrix_t *A, matrix_t *mini) {
+    s21_create_matrix(A->rows - 1, A->columns - 1, mini);
     int i_m = 0;
     for (int i = 0; i < A->rows; i++) {
         int j_m = 0;
         if (i == n) continue;
         for (int j = 0; j < A->columns; j++) {
             if (j != c) {
-                minimat->matrix[i_m][j_m] = A->matrix[i][j];
+                mini->matrix[i_m][j_m] = A->matrix[i][j];
                 j_m++;
             }
         }
@@ -166,7 +166,7 @@ int s21_calc_complements(matrix_t *A, matrix_t *result) {
         for (int i = 0; i < result->rows; i++) {
             for (int j = 0; j < result->columns; j++) {
                 matrix_t minor_mat;
-                s21_mini_matrix(i, j, A, &minor_mat);
+                s21_mini(i, j, A, &minor_mat);
                 double r;
                 s21_determinant(&minor_mat, &r);
                 result->matrix[i][j] = pow((-1), i + j) * r;
